@@ -1,23 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import axios from "axios";
+import "./styles.css";
 
 function App() {
+  const [city, setCity] = useState("");
+  const [weather, setWeather] = useState(null);
+  const apiKey = "5da7b2dc058f07286fea39c4cee516a3";
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
+      );
+      const data = response.data;
+      setWeather({
+        temperature: data.main.temp,
+        description: data.weather[0].description,
+        humidity: data.main.humidity,
+        wind: (data.wind.speed * 3.6).toFixed(2),
+        icon: data.weather[0].icon,
+      });
+    } catch (error) {
+      console.error("Error fetching the weather data", error);
+      setWeather(null);
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Weather Search Engine</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Search for city"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
+        <button type="submit">Search</button>
+      </form>
+      {weather && (
+        <ul>
+          <li>Temperature: {weather.temperature}°C</li>
+          <li>Description: {weather.description}</li>
+          <li>Humidity: {weather.humidity}%</li>
+          <li>Wind: {weather.wind} km/h</li>
+          <li>
+            <img
+              src={`https://openweathermap.org/img/wn/${weather.icon}.png`}
+              alt="weather icon"
+            />
+          </li>
+        </ul>
+      )}
     </div>
   );
 }

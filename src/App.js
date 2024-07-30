@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./styles.css";
+import "./App.css";
+//import "./styles.css//
 
 function App() {
   const [city, setCity] = useState("");
@@ -40,18 +41,31 @@ function App() {
         <button type="submit">Search</button>
       </form>
       {weather && (
-        <ul>
-          <li>Temperature: {weather.temperature}°C</li>
-          <li>Description: {weather.description}</li>
-          <li>Humidity: {weather.humidity}%</li>
-          <li>Wind: {weather.wind} km/h</li>
-          <li>
-            <img
-              src={`https://openweathermap.org/img/wn/${weather.icon}.png`}
-              alt="weather icon"
-            />
-          </li>
-        </ul>
+        <>
+          <ul>
+            <li>Temperature: {weather.temperature}°C</li>
+            <li>Description: {weather.description}</li>
+            <li>Humidity: {weather.humidity}%</li>
+            <li>Wind: {weather.wind} km/h</li>
+            <li>
+              <img
+                src={`https://openweathermap.org/img/wn/${weather.icon}.png`}
+                alt="weather icon"
+              />
+            </li>
+          </ul>
+          <footer>
+            Open
+            <a
+              href="https://github.com/siingiii/weather-react"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {" "}
+              source code
+            </a>
+          </footer>
+        </>
       )}
     </div>
   );

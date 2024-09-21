@@ -1,8 +1,9 @@
 {
   "name": "weather-react",
   "version": "0.1.0",
+  "homepage": ".",
   "engines": {
-    "node": "16.20.2"
+    "node": "16.x"
   },
   "private": true,
   "dependencies": {

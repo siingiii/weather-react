@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import axios from "axios";
+import Weather from "./Weather";
 import "./App.css";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <div className="container">
-        <h1>Weather Search Engine</h1>
+        <Weather defaultCity="Protea Glen" />
+
         <footer>
           This project was coded by Singita Innocentia and is{" "}
           <a
@@ -14,7 +15,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            open-source code on Github
+            open-source on Github
           </a>{" "}
           and hosted on{" "}
           <a
@@ -30,5 +31,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

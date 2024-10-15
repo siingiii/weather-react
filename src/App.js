@@ -14,6 +14,7 @@ export default function App() {
             href="https://github.com/siingiii/weather-react"
             target="_blank"
             rel="noopener noreferrer"
+            className="no-underline"
           >
             open-source on Github
           </a>{" "}
@@ -22,6 +23,7 @@ export default function App() {
             href="https://sprinkle-weather-react.netlify.app"
             target="_blank"
             rel="noopener noreferrer"
+            className="no-underline"
           >
             Netlify
           </a>

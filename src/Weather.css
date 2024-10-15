@@ -23,7 +23,7 @@
 
 .Weather li {
   font-size: 16px;
-  font-weight: 100px;
+  font-weight: 100;
   line-height: 19px;
   list-style: none;
 }
@@ -33,16 +33,15 @@
   align-items: center;
 }
 
-.Weather img {
-  height: 64px;
-  width: 64px;
-  margin-right: 2px;
+.Weather canvas {
+  margin-right: 8px;
   display: inline-block;
 }
+
 .Weather .temperature {
   font-weight: bold;
   color: rgb(33, 33, 33);
-  font-size: 58px;
+  font-size: 60px;
   line-height: 64px;
   font-weight: 400;
 }
@@ -53,6 +52,12 @@
   font-weight: 400;
   position: relative;
   line-height: 1;
-  top: -24px;
+  top: -28px;
   margin-right: 5px;
+  text-decoration: none;
+}
+
+.no-underline {
+  text-decoration: none; /* Remove underline */
+  /* Keep the text color the same as surrounding text */
 }

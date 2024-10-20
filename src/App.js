@@ -16,7 +16,7 @@ export default function App() {
             rel="noopener noreferrer"
             className="no-underline"
           >
-            open-source on Github
+            open-sourced on Github
           </a>{" "}
           and hosted on{" "}
           <a

@@ -27,6 +27,7 @@ export default function WeatherIcon(props) {
   };
 
   const icon = codeMapping[props.code] || "CLOUDY";
+
   return (
     <ReactAnimatedWeather
       icon={icon}

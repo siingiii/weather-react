@@ -10,6 +10,12 @@ export default function WeatherInfo(props) {
     return <div>Loading...</div>; // Show loading state or error message
   }
 
+  const icon = props.data?.icon; // Get the icon code
+
+  if (props.data.icon_url) {
+    console.log("Icon URL:", props.data.icon_url);
+  }
+
   return (
     <div className="WeatherInfo">
       <h1>{props.data.city}</h1>
@@ -22,11 +28,8 @@ export default function WeatherInfo(props) {
       <div className="row mt-3">
         <div className="col-6">
           <div className="weather-info">
-            <WeatherIcon
-              iconUrl={props.data.iconUrl}
-              code={props.data.iconUrl.split("/").pop().split(".")[0]}
-              size={52}
-            />
+            <WeatherIcon code={icon} size={52} />
+
             <WeatherTemperature celsius={props.data.temperature} />
           </div>
         </div>

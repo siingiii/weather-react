@@ -10,12 +10,14 @@ export default function Weather(props) {
 
   function handleResponse(response) {
     console.log(response.data);
+
     setWeatherData({
       ready: true,
+      coordinates: response.data.coordinates,
       temperature: response.data.temperature.current,
       wind: response.data.wind.speed,
       description: response.data.condition.description,
-      iconUrl: `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`,
+      icon: response.data.condition.icon,
       humidity: response.data.temperature.humidity,
       city: response.data.city,
       date: new Date(response.data.time * 1000),
@@ -38,7 +40,6 @@ export default function Weather(props) {
   }
 
   if (weatherData.ready) {
-    console.log(weatherData);
     return (
       <div className="Weather">
         <form onSubmit={handleSubmit}>
@@ -62,7 +63,7 @@ export default function Weather(props) {
           </div>
         </form>
         <WeatherInfo data={weatherData} />
-        <WeatherForecast data={weatherData} />
+        <WeatherForecast coordinates={weatherData.coordinates} />
       </div>
     );
   } else {
